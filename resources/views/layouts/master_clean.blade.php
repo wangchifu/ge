@@ -33,15 +33,10 @@
 </head>
 
 <body>
-
-@include('layouts.header')
-
+	
 <main>
 @yield('content')
 </main>
-
-@include('layouts.footer')
-
 
 <!-- # JS Plugins -->
 <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>

@@ -11,13 +11,36 @@
                     @auth
                         @if(auth()->user()->admin==1)
                             <div class="col-2 mb-4">
+                                <a class="btn btn-outline-primary" href="{{ route('post.create') }}">新增公告</a>
+                            </div>
+                            <div class="col-2 mb-4">
                                 <a class="btn btn-outline-primary" href="{{ route('user.index') }}">帳號管理</a>
                             </div>
                         @endif
                     @endauth
                     <h2 class="section-title mb-3">最新公告</h2>
+                    <table class="table table-bordered table-hover align-middle">
+                        <thead class="table-secondary">
+                          <tr>
+                            <th>標題</th>
+                            <th>發佈者</th>
+                            <th>點閱</th>
+                            <th>發佈日期</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          @foreach ($posts as $post)
+                            <tr>
+                              <td><a href="{{ route('post.show',$post->id) }}" data-vbtype="iframe" class="venobox-link">{{ $post->title }}</a></td>
+                              <td>{{ $post->user->name }}</td>
+                              <td>{{ $post->views }}</td>
+                              <td>{{ \Illuminate\Support\Str::limit($post->created_at, 10, '') }}</td>
+                            </tr>
+                          @endforeach
+                        </tbody>
+                      </table>                    
                     <div class="col-12 mb-4">
-                        分頁
+                        {{ $posts->withQueryString()->links('pagination::bootstrap-5') }}
                     </div>            
                 </div>
                 <div class="row">
@@ -125,4 +148,30 @@
         </div>
     </div>
 </section>
+@endsection
+
+@section('my_js')
+<script>
+    $(document).ready(function(){
+        var vb = new VenoBox({
+            selector: '.venobox-link',
+            numeration: true,
+            infinigall: true,
+            //share: ['facebook', 'twitter', 'linkedin', 'pinterest', 'download'],
+            spinner: 'rotating-plane'
+        });
+
+    $(document).on('click', '.vbox-close', function() {
+            vb.close();
+        });
+
+    // 監聽 iframe 發送的消息
+    window.addEventListener('message', function(event) {
+        // 檢查消息內容，並且只處理關閉的請求
+        if (event.data === 'closeVenobox') {
+            vb.VBclose(); // 關閉 Venobox 視窗
+        }
+    }, false);
+    });  
+</script>
 @endsection

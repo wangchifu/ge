@@ -6,13 +6,16 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use App\Models\User;
+use App\Models\Post;
 
 class HomeController extends Controller
 {
     public function index(){
          
+        $posts = Post::orderBy('created_at','DESC')
+            ->paginate(10); 
         $data = [
-
+            'posts'=>$posts,
         ];
         return view('index',$data);
     }
