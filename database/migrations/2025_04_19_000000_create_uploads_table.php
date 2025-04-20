@@ -18,6 +18,7 @@ class CreateUploadsTable extends Migration
             $table->tinyInteger('order_by')->nullable();
             $table->string('power');
             $table->string('name');
+            $table->string('sitename')->nullable();
             $table->string('url')->nullable();
             $table->unsignedInteger('type_id')->nullable();     
             $table->unsignedInteger('user_id');  

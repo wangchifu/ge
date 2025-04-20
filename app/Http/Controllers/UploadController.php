@@ -10,6 +10,7 @@ use App\Models\Upload;
 class UploadController extends Controller
 {
     public function index($power=null,$type_id=null){
+        if(is_null($type_id)) $type_id="999";
         $power_items = config('ge.power_items');
         $power_item = $power_items[$power];
         if(is_null($type_id) or $type_id == 999){
@@ -32,11 +33,13 @@ class UploadController extends Controller
             'type_select'=>$type_select,
         ];
         return view('uploads.index',$data);
-    }
+    }    
 
     public function type_index($power=null){
         if(strpos(auth()->user()->power,$power) === false){
-            return back();
+            if(empty(auth()->user()->admin)){
+                return back();
+            }            
         }
         $power_items = config('ge.power_items');
         $power_item = $power_items[$power];
@@ -52,7 +55,9 @@ class UploadController extends Controller
 
     public function type_create($power=null){
         if(strpos(auth()->user()->power,$power) === false){
-            return back();
+            if(empty(auth()->user()->admin)){
+                return back();
+            }            
         }
         $power_items = config('ge.power_items');
         $power_item = $power_items[$power];
@@ -66,7 +71,9 @@ class UploadController extends Controller
 
     public function type_store(Request $request,$power){
         if(strpos(auth()->user()->power,$power) === false){
-            return back();
+            if(empty(auth()->user()->admin)){
+                return back();
+            }            
         }
         $power_items = config('ge.power_items');
         $power_item = $power_items[$power];
@@ -81,7 +88,9 @@ class UploadController extends Controller
 
     public function type_edit(Type $type){
         if(strpos(auth()->user()->power,$type->power) === false){
-            return back();
+            if(empty(auth()->user()->admin)){
+                return back();
+            }            
         }
         $power_items = config('ge.power_items');
         $power_item = $power_items[$type->power];
@@ -96,8 +105,10 @@ class UploadController extends Controller
 
     public function type_update(Request $request,Type $type){
         if(strpos(auth()->user()->power,$type->power) === false){
-            return back();
-        }        
+            if(empty(auth()->user()->admin)){
+                return back();
+            }            
+        }     
         $power_items = config('ge.power_items');
         $power_item = $power_items[$type->power];
         $att['order_by'] = $request->input('order_by');
@@ -110,10 +121,16 @@ class UploadController extends Controller
 
     public function type_delete(Type $type){
         if(strpos(auth()->user()->power,$type->power) === false){
-            return back();
-        }    
+            if(empty(auth()->user()->admin)){
+                return back();
+            }            
+        }
         $power = $type->power;        
-        
+        $folder = storage_path('app/public/uploads/'.$power.'/'.$type->id);        
+        if(file_exists($folder)){
+            del_folder($folder);
+        }
+        Upload::where('type_id',$type->id)->delete();
         $type->delete();
 
         return redirect()->route('upload.type_index',$power);
@@ -121,7 +138,9 @@ class UploadController extends Controller
 
     public function item_create($power=null){
         if(strpos(auth()->user()->power,$power) === false){
-            return back();
+            if(empty(auth()->user()->admin)){
+                return back();
+            }            
         }
         $power_items = config('ge.power_items');
         $power_item = $power_items[$power];
@@ -141,7 +160,9 @@ class UploadController extends Controller
 
     public function item_store(Request $request,$power){
         if(strpos(auth()->user()->power,$power) === false){
-            return back();
+            if(empty(auth()->user()->admin)){
+                return back();
+            }            
         }
         //處理檔案上傳        
         if ($request->hasFile('files')) {
@@ -154,9 +175,10 @@ class UploadController extends Controller
                 $safeName = str_replace(' ', '', $originalName);                
 
                 $att['order_by'] = $request->input('order_by');
-                $att['power'] = $power;
+                $att['power'] = $power;             
                 $att['name'] = $safeName;
                 $att['type_id'] = $request->input('type_id');
+                $att['sitename'] = $request->input('sitename');
                 $att['url'] = $request->input('url');
                 $att['user_id'] = auth()->user()->id;
                 $att['views'] = 0;
@@ -178,10 +200,18 @@ class UploadController extends Controller
         //return response()->download($file);        
         return response()->file($file);        
     }
+    public function item_link(Upload $upload){                
+        $att['views'] = $upload->views;
+        $att['views']++;        
+        $upload->update($att);            
+        return redirect($upload->url);        
+    }
 
     public function item_delete(Upload $upload){
         if(strpos(auth()->user()->power,$upload->power) === false){
-            return back();
+            if(empty(auth()->user()->admin)){
+                return back();
+            }            
         }
         $file = storage_path('app/public/uploads/'.$upload->power.'/'.$upload->type_id.'/'.$upload->name);
         if(file_exists($file)){

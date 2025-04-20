@@ -37,6 +37,7 @@ Route::get('post/show/{post}', [PostController::class,'show'])->name('post.show'
 Route::get('upload/index/{power}/{type_id?}', [UploadController::class,'index'])->name('upload.index');
 
 Route::get('upload/item_download/{upload}', [UploadController::class,'item_download'])->name('upload.item_download');
+Route::get('upload/item_link/{upload}', [UploadController::class,'item_link'])->name('upload.item_link');
 
 //管理者可用
 Route::group(['middleware' => 'admin'],function(){
@@ -56,6 +57,7 @@ Route::group(['middleware' => 'admin'],function(){
 //具有管理權限者
 Route::group(['middleware' => 'power'],function(){
     Route::get('upload/type_index/{power}', [UploadController::class,'type_index'])->name('upload.type_index');
+    
     Route::get('upload/type_create/{power}', [UploadController::class,'type_create'])->name('upload.type_create');
     Route::post('upload/type_store/{power}', [UploadController::class,'type_store'])->name('upload.type_store');
     Route::get('upload/type_edit/{type}', [UploadController::class,'type_edit'])->name('upload.type_edit');

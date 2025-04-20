@@ -41,7 +41,7 @@
                                 <form action="{{ route('upload.type_delete',$type->id) }}" method="POST" class="d-inline" id="delete{{ $type->id }}">
                                   @csrf
                                   @method('DELETE')
-                                  <a class="btn btn-sm btn-outline-danger" onclick="sw_confirm2('確定要刪除嗎？','delete{{ $type->id }}')">刪除</a>
+                                  <a class="btn btn-sm btn-outline-danger" onclick="sw_confirm2('確定要刪除嗎？連同底下的檔案一起刪除喔！！','delete{{ $type->id }}')">刪除</a>
                                 </form>
                               </td>
                             </tr>

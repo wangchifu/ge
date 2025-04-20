@@ -18,8 +18,12 @@
                     性平媒材
                 </a>
               <div class="dropdown-menu"> 
-                <a class="dropdown-item" href="travel.html">書籍專區</a>
-                <a class="dropdown-item" href="travel.html">影片專區</a>                
+                <?php
+                  $types = \App\Models\Type::where('power','B')->orderBy('order_by')->get();
+                ?>
+                @foreach($types as $type)
+                <a class="dropdown-item" href="{{ route('upload.index',['power'=>'B','type_id'=>$type->id]) }}">{{ $type->name }}</a>
+              @endforeach                
               </div>
             </li>
             <li class="nav-item"> <a class="nav-link" href="{{ route('upload.index','C') }}">性平事件處理表單</a>

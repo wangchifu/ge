@@ -44,13 +44,160 @@
                     </div>            
                 </div>
                 <div class="row">
-                    <h2 class="section-title mb-3">專業人才庫</h2>         
+                    <h2 class="section-title mb-3">專業人才庫</h2>   
+                    <table class="table table-bordered table-hover align-middle">
+                        <thead class="table-secondary">
+                          <tr>
+                            <th scope="col">分類</th>
+                            <th scope="col">名稱</th>
+                            <th scope="col">下載或連結</th>
+                            <th scope="col">點擊數</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          @foreach ($Auploads as $upload)
+                            <tr>
+                              <td>
+                                @if($upload->type_id == 0)
+                                    <?php $type_id = 0; ?>
+                                    不分類
+                                @else
+                                    <?php $type_id = $upload->type_id; ?>
+                                    {{ $upload->type->name }}
+                                @endif
+                              </td>
+                              <td>
+                                @if($upload->power == "D")
+                                    <img src="{{ asset('storage/uploads/'.$upload->power.'/'.$type_id.'/'.$upload->name) }}" width="100">
+                                @else
+                                    {{ $upload->name }}
+                                @endif
+                              </td>
+                              <td>                                
+                                @if($upload->power == "D")
+                                <?php $url = route('upload.item_link',$upload->id); ?>
+                                    <a href="#!" class="btn btn-sm btn-success" onclick="openFileAndReload('{{ $url }}'); return false;">
+                                        連結
+                                    </a>
+                                @else          
+                                    <?php $url = route('upload.item_download',$upload->id); ?>                      
+                                    <a href="#!" class="btn btn-sm btn-success" onclick="openFileAndReload('{{ $url }}'); return false;">
+                                        下載
+                                    </a>
+                                @endif
+                              </td>
+                              <td>{{ $upload->views }}</td>
+                            </tr>
+                          @endforeach
+                        </tbody>
+                      </table>      
+                      <div class="col-12 mb-4">    
+                        <small>[<a href="{{ route('upload.index','A') }}">更多專業人才庫...</a>]</small>                    
+                    </div>                                  
                 </div>
                 <div class="row">
-                    <h2 class="section-title mb-3">性平媒材</h2>        
+                    <h2 class="section-title mb-3">性平媒材</h2>
+                    <table class="table table-bordered table-hover align-middle">
+                        <thead class="table-secondary">
+                          <tr>
+                            <th scope="col">分類</th>
+                            <th scope="col">名稱</th>
+                            <th scope="col">下載或連結</th>
+                            <th scope="col">點擊數</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          @foreach ($Buploads as $upload)
+                            <tr>
+                              <td>
+                                @if($upload->type_id == 0)
+                                    <?php $type_id = 0; ?>
+                                    不分類
+                                @else
+                                    <?php $type_id = $upload->type_id; ?>
+                                    {{ $upload->type->name }}
+                                @endif
+                              </td>
+                              <td>
+                                @if($upload->power == "D")
+                                    <img src="{{ asset('storage/uploads/'.$upload->power.'/'.$type_id.'/'.$upload->name) }}" width="100">
+                                @else
+                                    {{ $upload->name }}
+                                @endif
+                              </td>
+                              <td>                                
+                                @if($upload->power == "D")
+                                <?php $url = route('upload.item_link',$upload->id); ?>
+                                    <a href="#!" class="btn btn-sm btn-success" onclick="openFileAndReload('{{ $url }}'); return false;">
+                                        連結
+                                    </a>
+                                @else          
+                                    <?php $url = route('upload.item_download',$upload->id); ?>                      
+                                    <a href="#!" class="btn btn-sm btn-success" onclick="openFileAndReload('{{ $url }}'); return false;">
+                                        下載
+                                    </a>
+                                @endif
+                              </td>
+                              <td>{{ $upload->views }}</td>
+                            </tr>
+                          @endforeach
+                        </tbody>
+                      </table>      
+                      <div class="col-12 mb-4">         
+                        <small>[<a href="{{ route('upload.index','B') }}">更多性平媒材...</a>]</small>                                   
+                    </div>                                            
                 </div>
                 <div class="row">
-                    <h2 class="section-title mb-3">性平事件處理</h2>          
+                    <h2 class="section-title mb-3">性平事件處理表單</h2>     
+                    <table class="table table-bordered table-hover align-middle">
+                        <thead class="table-secondary">
+                          <tr>
+                            <th scope="col">分類</th>
+                            <th scope="col">名稱</th>
+                            <th scope="col">下載或連結</th>
+                            <th scope="col">點擊數</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          @foreach ($Cuploads as $upload)
+                            <tr>
+                              <td>
+                                @if($upload->type_id == 0)
+                                    <?php $type_id = 0; ?>
+                                    不分類
+                                @else
+                                    <?php $type_id = $upload->type_id; ?>
+                                    {{ $upload->type->name }}
+                                @endif
+                              </td>
+                              <td>
+                                @if($upload->power == "D")
+                                    <img src="{{ asset('storage/uploads/'.$upload->power.'/'.$type_id.'/'.$upload->name) }}" width="100">
+                                @else
+                                    {{ $upload->name }}
+                                @endif
+                              </td>
+                              <td>                                
+                                @if($upload->power == "D")
+                                <?php $url = route('upload.item_link',$upload->id); ?>
+                                    <a href="#!" class="btn btn-sm btn-success" onclick="openFileAndReload('{{ $url }}'); return false;">
+                                        連結
+                                    </a>
+                                @else          
+                                    <?php $url = route('upload.item_download',$upload->id); ?>                      
+                                    <a href="#!" class="btn btn-sm btn-success" onclick="openFileAndReload('{{ $url }}'); return false;">
+                                        下載
+                                    </a>
+                                @endif
+                              </td>
+                              <td>{{ $upload->views }}</td>
+                            </tr>
+                          @endforeach
+                        </tbody>
+                      </table>    
+                      <div class="col-12 mb-4">        
+                        <small>[<a href="{{ route('upload.index','C') }}">更多性平事件處理表單...</a>]</small>                                    
+                    </div>                                           
                 </div>
             </div>
             <div class="col-lg-4">
@@ -61,20 +208,24 @@
                                 <h2 class="section-title mb-3">友站連結</h2>
                                 <div class="widget-body">
                                     <div class="widget-list">
-                                        <article class="card mb-4">
-                                            <div class="card-image">
-                                            <div class="post-info"> <span class="text-uppercase">1 minutes read</span>
-                                            </div>
-                                            <img loading="lazy" decoding="async" src="images/post/post-9.jpg" alt="Post Thumbnail" class="w-100">
-                                            </div>
-                                            <div class="card-body px-0 pb-1">
-                                            <h3>
-                                                <a class="post-title post-title-sm" href="article.html">
-                                                    Portugal and France Now Allow Unvaccinated Tourists
+                                        @foreach($Duploads as $upload)
+                                            <article class="card mb-4">
+                                                <div class="card-image">
+                                                <div class="post-info"> <span class="text-uppercase">{{ $upload->created_at }}</span>
+                                                </div>
+                                                <a href="{{ $upload->url }}" target="_blank">
+                                                    <img loading="lazy" decoding="async" src="{{ asset('storage/uploads/'.$upload->power.'/'.$upload->type_id.'/'.$upload->name) }}" alt="Post Thumbnail" class="w-100">
                                                 </a>
-                                            </h3>                                        
-                                            </div>
-                                        </article>                            
+                                                </div>
+                                                <div class="card-body px-0 pb-1">
+                                                <h3>
+                                                    <a class="post-title post-title-sm" href="{{ $upload->url }}" target="_blank">
+                                                        {{ $upload->sitename }}
+                                                    </a>
+                                                </h3>                                        
+                                                </div>
+                                            </article>                   
+                                        @endforeach         
                                     </div>
                                 </div>
                             </div>
@@ -84,28 +235,11 @@
                                 <h2 class="section-title mb-3">相關法規</h2>
                                 <div class="widget-body">
                                     <ul class="widget-list">
-                                    <li><a href="#!">computer<span class="ml-auto">(3)</span></a>
-                                    </li>
-                                    <li><a href="#!">cruises<span class="ml-auto">(2)</span></a>
-                                    </li>
-                                    <li><a href="#!">destination<span class="ml-auto">(1)</span></a>
-                                    </li>
-                                    <li><a href="#!">internet<span class="ml-auto">(4)</span></a>
-                                    </li>
-                                    <li><a href="#!">lifestyle<span class="ml-auto">(2)</span></a>
-                                    </li>
-                                    <li><a href="#!">news<span class="ml-auto">(5)</span></a>
-                                    </li>
-                                    <li><a href="#!">telephone<span class="ml-auto">(1)</span></a>
-                                    </li>
-                                    <li><a href="#!">tips<span class="ml-auto">(1)</span></a>
-                                    </li>
-                                    <li><a href="#!">travel<span class="ml-auto">(3)</span></a>
-                                    </li>
-                                    <li><a href="#!">website<span class="ml-auto">(4)</span></a>
-                                    </li>
-                                    <li><a href="#!">hugo<span class="ml-auto">(2)</span></a>
-                                    </li>
+                                    @foreach ($Euploads as $upload)
+                                        <?php $url = route('upload.item_download',$upload->id); ?>
+                                        <li><a href="#!" onclick="openFileAndReload('{{ $url }}'); return false;">{{ $upload->name }} ({{ $upload->views }})</a>
+                                        </li>
+                                    @endforeach                                                                        
                                     </ul>
                                 </div>
                             </div>                        
@@ -115,28 +249,11 @@
                                 <h2 class="section-title mb-3">資源分享</h2>
                                 <div class="widget-body">
                                     <ul class="widget-list">
-                                    <li><a href="#!">computer<span class="ml-auto">(3)</span></a>
-                                    </li>
-                                    <li><a href="#!">cruises<span class="ml-auto">(2)</span></a>
-                                    </li>
-                                    <li><a href="#!">destination<span class="ml-auto">(1)</span></a>
-                                    </li>
-                                    <li><a href="#!">internet<span class="ml-auto">(4)</span></a>
-                                    </li>
-                                    <li><a href="#!">lifestyle<span class="ml-auto">(2)</span></a>
-                                    </li>
-                                    <li><a href="#!">news<span class="ml-auto">(5)</span></a>
-                                    </li>
-                                    <li><a href="#!">telephone<span class="ml-auto">(1)</span></a>
-                                    </li>
-                                    <li><a href="#!">tips<span class="ml-auto">(1)</span></a>
-                                    </li>
-                                    <li><a href="#!">travel<span class="ml-auto">(3)</span></a>
-                                    </li>
-                                    <li><a href="#!">website<span class="ml-auto">(4)</span></a>
-                                    </li>
-                                    <li><a href="#!">hugo<span class="ml-auto">(2)</span></a>
-                                    </li>
+                                    @foreach ($Fuploads as $upload)
+                                        <?php $url = route('upload.item_download',$upload->id); ?>
+                                        <li><a href="#!" onclick="openFileAndReload('{{ $url }}'); return false;">{{ $upload->name }} ({{ $upload->views }})</a>
+                                        </li>
+                                    @endforeach                                    
                                     </ul>
                                 </div>
                             </div>
@@ -173,5 +290,13 @@
         }
     }, false);
     });  
+
+    function openFileAndReload(url) {
+        window.open(url, '_blank');
+    
+        setTimeout(() => {
+            location.reload();
+        }, 300); // 延遲一點點，確保 reload 執行（300~500ms 效果較穩）
+    }    
 </script>
 @endsection

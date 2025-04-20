@@ -46,8 +46,13 @@
                         </div>
 
                         <div class="mb-3">
+                            <label for="name" class="form-label">網站名稱 <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" name="sitename" id="sitename" required placeholder="請輸入網站名稱">
+                        </div>
+
+                        <div class="mb-3">
                             <label for="url" class="form-label">網址</label>
-                            <input type="text" class="form-control" name="url" id="url" placeholder="請輸入網址 https://" required>
+                            <input type="text" class="form-control" name="url" id="url" placeholder="請輸入網址 含 https://" required>
                         </div>
                     @else
                         <div class="mb-3">

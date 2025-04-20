@@ -12,7 +12,8 @@ class Upload extends Model
     protected $fillable = [
         'order_by',
         'power',        
-        'name',      
+        'name',    
+        'sitename',
         'url',
         'type_id',        
         'user_id',   
