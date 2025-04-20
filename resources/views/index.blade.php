@@ -225,7 +225,8 @@
                                                 </h3>                                        
                                                 </div>
                                             </article>                   
-                                        @endforeach         
+                                        @endforeach  
+                                        <small>[<a href="{{ route('upload.index','D') }}">更多友站連結...</a>]</small>                                           
                                     </div>
                                 </div>
                             </div>
@@ -241,6 +242,7 @@
                                         </li>
                                     @endforeach                                                                        
                                     </ul>
+                                    <small>[<a href="{{ route('upload.index','E') }}">更多相關法規...</a>]</small>                                    
                                 </div>
                             </div>                        
                         </div>
@@ -255,6 +257,7 @@
                                         </li>
                                     @endforeach                                    
                                     </ul>
+                                    <small>[<a href="{{ route('upload.index','F') }}">更多資源分享...</a>]</small>                                    
                                 </div>
                             </div>
                             
