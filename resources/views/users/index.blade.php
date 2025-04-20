@@ -7,10 +7,10 @@
     <div class="container">
         <div class="row no-gutters-lg">
             <div class="col-lg-12 mb-5 mb-lg-0">
-                <div class="row">
+                <div class="row">                    
                     <h2 class="section-title mb-3">帳號管理</h2>
                     <table class="table table-bordered table-striped">
-                        <thead class="table-dark">
+                        <thead class="table-secondary">
                           <tr>
                             <th>學校</th>
                             <th>職稱</th>
@@ -52,9 +52,9 @@
                         </tbody>
                       </table>
                       註：A:專業人才庫,B:性平媒材,C:性平事件處理表單,D:友站連結,E:相關法規,F:資源分享
-                      {{ $users->withQueryString()->links('pagination::bootstrap-5') }}
+                      {{ $users->withQueryString()->links('pagination::bootstrap-5') }}                      
                 </div>
-            </div>            
+            </div>               
         </div>
     </div>
 </section>

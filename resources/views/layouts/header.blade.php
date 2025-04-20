@@ -11,7 +11,7 @@
         </div>        
         <div class="collapse navbar-collapse text-center order-lg-2 order-4" id="navigation">
           <ul class="navbar-nav mx-auto mt-3 mt-lg-0">
-            <li class="nav-item"> <a class="nav-link" href="about.html">專業人才庫</a>
+            <li class="nav-item"> <a class="nav-link" href="{{ route('upload.index','A') }}">專業人才庫</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -22,13 +22,13 @@
                 <a class="dropdown-item" href="travel.html">影片專區</a>                
               </div>
             </li>
-            <li class="nav-item"> <a class="nav-link" href="about.html">性平事件處理表單</a>
+            <li class="nav-item"> <a class="nav-link" href="{{ route('upload.index','C') }}">性平事件處理表單</a>
             </li>
-            <li class="nav-item"> <a class="nav-link" href="contact.html">友站連結</a>
+            <li class="nav-item"> <a class="nav-link" href="{{ route('upload.index','D') }}">友站連結</a>
             </li>
-            <li class="nav-item"> <a class="nav-link" href="about.html">相關法規</a>
+            <li class="nav-item"> <a class="nav-link" href="{{ route('upload.index','E') }}">相關法規</a>
             </li>
-            <li class="nav-item"> <a class="nav-link" href="contact.html">資源分享</a>
+            <li class="nav-item"> <a class="nav-link" href="{{ route('upload.index','F') }}">資源分享</a>
             </li>          
             @guest  
             <li class="nav-item"> <a class="nav-link" href="{{ route('glogin') }}">登入</a>

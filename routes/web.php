@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\UploadController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +34,10 @@ Route::get('auth/callback', [OpenIDController::class,'callback'])->name('callbac
 
 Route::get('post/show/{post}', [PostController::class,'show'])->name('post.show');
 
+Route::get('upload/index/{power}/{type_id?}', [UploadController::class,'index'])->name('upload.index');
+
+Route::get('upload/item_download/{upload}', [UploadController::class,'item_download'])->name('upload.item_download');
+
 //管理者可用
 Route::group(['middleware' => 'admin'],function(){
     Route::get('user/index', [UserController::class,'index'])->name('user.index');
@@ -47,3 +52,17 @@ Route::group(['middleware' => 'admin'],function(){
     Route::get('post/destroy/{post}', [PostController::class,'destroy'])->name('post.destroy');
     Route::get('post/{post}/delete_file/{filename}', [PostController::class,'delete_file'])->name('post.delete_file');
 });
+
+//具有管理權限者
+Route::group(['middleware' => 'power'],function(){
+    Route::get('upload/type_index/{power}', [UploadController::class,'type_index'])->name('upload.type_index');
+    Route::get('upload/type_create/{power}', [UploadController::class,'type_create'])->name('upload.type_create');
+    Route::post('upload/type_store/{power}', [UploadController::class,'type_store'])->name('upload.type_store');
+    Route::get('upload/type_edit/{type}', [UploadController::class,'type_edit'])->name('upload.type_edit');
+    Route::post('upload/type_update/{type}', [UploadController::class,'type_update'])->name('upload.type_update');
+    Route::delete('upload/type_delete/{type}', [UploadController::class,'type_delete'])->name('upload.type_delete');
+
+    Route::get('upload/item_create/{power}', [UploadController::class,'item_create'])->name('upload.item_create');
+    Route::post('upload/item_store/{power}', [UploadController::class,'item_store'])->name('upload.item_store');
+    Route::get('upload/item_delete/{upload}', [UploadController::class,'item_delete'])->name('upload.item_delete');    
+});    

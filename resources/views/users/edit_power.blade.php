@@ -20,7 +20,7 @@
                                 <div class="form-check">                                
                                 <input class="form-check-input" type="checkbox" id="adminCheck" name="admin" value="1" {{ $checked1 }}>
                                 <label class="form-check-label" for="adminCheck">
-                                    系統管理員
+                                    系統管理員(公告管理、帳號管理)
                                 </label>
                                 </div>
                             </div>

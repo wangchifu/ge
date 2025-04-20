@@ -12,9 +12,11 @@ class Upload extends Model
     protected $fillable = [
         'order_by',
         'power',        
-        'name',        
+        'name',      
+        'url',
         'type_id',        
-        'user_id',    
+        'user_id',   
+        'views',
     ];
 
     public function type()
