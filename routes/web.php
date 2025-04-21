@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UploadController;
+use App\Http\Controllers\OpenIDController;
 
 /*
 |--------------------------------------------------------------------------

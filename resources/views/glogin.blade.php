@@ -11,7 +11,19 @@
                     <h2 class="section-title mb-3">帳號登入</h2>
                     <div class="container">
                         <div class="row">
-                            <div class="col-lg-6 mx-auto">
+                            <div class="col-lg-6 mx-auto">    
+                                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                      <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">1.彰化 GSuite 登入</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <!--
+                                       <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false"></button>
+                                        -->
+                                       <a class="nav-link" href="{{ route('sso') }}">2.彰化縣雲端帳號登入</a>
+                                    </li>
+                                </ul>
+                                <br>                            
                                 <form method="POST" action="{{ route('gauth') }}" class="row">
                                     @csrf
                                     <div class="col-md-6">
