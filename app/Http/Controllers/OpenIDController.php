@@ -116,7 +116,7 @@ class OpenIDController extends Controller
       $user_obj['name'] = $userinfo['name'];      
       $user_obj['personid'] = $profile['personid'];
       $user_obj['code'] = $edufile['schoolid'];
-        $schools_name = config('pd.schools_name');
+        $schools_name = config('ge.schools_name');
       $user_obj['school'] = $schools_name[$user_obj['code']];
       $user_obj['kind'] = $edufile['titles'][0]['titles'][0];   
       if ($user_obj['kind'] == "學生") {
@@ -133,7 +133,7 @@ class OpenIDController extends Controller
 
             // 找出隸屬於哪一所學校 id 代號
             //$school = School::where('code_no', 'like', $obj['code'] . '%')->first();
-            $schools_id = config('pd.schools_id');
+            $schools_id = config('ge.schools_id');
             $school_id = !isset($schools_id[$user_obj['code']]) ? 0 : $schools_id[$user_obj['code']];
 
             //是否已有此帳號

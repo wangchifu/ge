@@ -20,10 +20,10 @@
                                         <!--
                                        <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false"></button>
                                         -->
-                                       <a class="nav-link" href="{{ route('sso') }}">2.彰化縣雲端帳號登入</a>
+                                       <a class="nav-link" href="{{ route('sso') }}" onclick="window.location.href='{{ route('sso') }}'">2.彰化縣雲端帳號登入</a>
                                     </li>
                                 </ul>
-                                <br>                            
+                                <br>                                                         
                                 <form method="POST" action="{{ route('gauth') }}" class="row">
                                     @csrf
                                     <div class="col-md-6">
