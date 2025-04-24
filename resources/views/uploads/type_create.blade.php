@@ -26,12 +26,12 @@
                         @csrf
 
                         <div class="mb-3">
-                          <label for="order_by" class="form-label">排序（可不填）</label>
+                          <label for="order_by" class="form-label fw-bold">排序（可不填）</label>
                           <input type="number" class="form-control" name="order_by" id="order_by" placeholder="請輸入排序值">
                         </div>
                       
                         <div class="mb-3">
-                          <label for="name" class="form-label">名稱 <span class="text-danger">*</span></label>
+                          <label for="name" class="form-label fw-bold">名稱 <span class="text-danger">*</span></label>
                           <input type="text" class="form-control" name="name" id="name" required placeholder="請輸入名稱">
                         </div>
                       

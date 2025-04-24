@@ -14,7 +14,7 @@ class UploadController extends Controller
         $power_items = config('ge.power_items');
         $power_item = $power_items[$power];
         if(is_null($type_id) or $type_id == 999){
-            $uploads = Upload::where('power',$power)->orderBy('order_by')->orderBy('id','DESC')->paginate(10);
+            $uploads = Upload::where('power',$power)->orderBy('id','DESC')->paginate(10);
         }else{            
             $uploads = Upload::where('power',$power)->where('type_id',$type_id)->orderBy('order_by')->orderBy('id','DESC')->paginate(10);
         }
@@ -190,6 +190,46 @@ class UploadController extends Controller
         }
 
         return redirect()->route('upload.index',$power);
+    }
+
+    public function item_edit(Upload $upload,$power=null){
+        if(strpos(auth()->user()->power,$power) === false){
+            if(empty(auth()->user()->admin)){
+                return back();
+            }            
+        }
+        $power_items = config('ge.power_items');
+        $power_item = $power_items[$power];
+        $types = Type::where('power',$power)->orderBy('order_by')->get();
+        $type_select[0] = "不分類";
+        foreach($types as $type){
+            $type_select[$type->id] = $type->name;
+        }
+        $data = [
+            'power'=>$power,
+            'power_item'=>$power_item,
+            'type_select'=>$type_select,
+            'upload'=>$upload,
+        ];
+        return view('uploads.item_edit',$data);
+
+    }
+
+    public function item_update(Request $request,Upload $upload){
+        if(strpos(auth()->user()->power,$upload->power) === false){
+            if(empty(auth()->user()->admin)){
+                return back();
+            }            
+        }
+        $att['order_by'] = $request->input('order_by');
+        $att['power'] = $upload->power;                             
+        $att['sitename'] = $request->input('sitename');
+        $att['url'] = $request->input('url');
+        $att['user_id'] = auth()->user()->id;        
+
+        $upload->update($att);
+
+        return redirect()->route('upload.index',$upload->power);
     }
 
     public function item_download(Upload $upload){        

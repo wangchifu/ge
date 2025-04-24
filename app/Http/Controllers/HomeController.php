@@ -16,12 +16,12 @@ class HomeController extends Controller
         $posts = Post::orderBy('created_at','DESC')
             ->paginate(10); 
         
-        $Auploads = Upload::where('power','A')->orderBy('order_by')->orderBy('id','DESC')->paginate(5);
-        $Buploads = Upload::where('power','B')->orderBy('order_by')->orderBy('id','DESC')->paginate(5);
-        $Cuploads = Upload::where('power','C')->orderBy('order_by')->orderBy('id','DESC')->paginate(5);
-        $Duploads = Upload::where('power','D')->orderBy('order_by')->orderBy('id','DESC')->paginate(5);
-        $Euploads = Upload::where('power','E')->orderBy('order_by')->orderBy('id','DESC')->paginate(5);
-        $Fuploads = Upload::where('power','F')->orderBy('order_by')->orderBy('id','DESC')->paginate(5);
+        $Auploads = Upload::where('power','A')->orderBy('id','DESC')->paginate(5);
+        $Buploads = Upload::where('power','B')->orderBy('id','DESC')->paginate(5);
+        $Cuploads = Upload::where('power','C')->orderBy('id','DESC')->paginate(5);
+        $Duploads = Upload::where('power','D')->orderBy('id','DESC')->paginate(5);
+        $Euploads = Upload::where('power','E')->orderBy('id','DESC')->paginate(5);
+        $Fuploads = Upload::where('power','F')->orderBy('id','DESC')->paginate(5);
 
         $data = [
             'posts'=>$posts,

@@ -65,7 +65,9 @@ Route::group(['middleware' => 'power'],function(){
     Route::post('upload/type_update/{type}', [UploadController::class,'type_update'])->name('upload.type_update');
     Route::delete('upload/type_delete/{type}', [UploadController::class,'type_delete'])->name('upload.type_delete');
 
-    Route::get('upload/item_create/{power}', [UploadController::class,'item_create'])->name('upload.item_create');
+    Route::get('upload/item_create/{power}', [UploadController::class,'item_create'])->name('upload.item_create');    
     Route::post('upload/item_store/{power}', [UploadController::class,'item_store'])->name('upload.item_store');
+    Route::get('upload/item_edit/{upload}/{power}', [UploadController::class,'item_edit'])->name('upload.item_edit');
+    Route::post('upload/item_update/{upload}', [UploadController::class,'item_update'])->name('upload.item_update');
     Route::get('upload/item_delete/{upload}', [UploadController::class,'item_delete'])->name('upload.item_delete');    
 });    

@@ -50,7 +50,7 @@
                           <tr>
                             <th scope="col">分類</th>
                             <th scope="col">名稱</th>
-                            <th scope="col">下載或連結</th>
+                            <th scope="col">動作</th>
                             <th scope="col">點擊數</th>
                           </tr>
                         </thead>
@@ -102,7 +102,7 @@
                           <tr>
                             <th scope="col">分類</th>
                             <th scope="col">名稱</th>
-                            <th scope="col">下載或連結</th>
+                            <th scope="col">動作</th>
                             <th scope="col">點擊數</th>
                           </tr>
                         </thead>
@@ -154,7 +154,7 @@
                           <tr>
                             <th scope="col">分類</th>
                             <th scope="col">名稱</th>
-                            <th scope="col">下載或連結</th>
+                            <th scope="col">動作</th>
                             <th scope="col">點擊數</th>
                           </tr>
                         </thead>

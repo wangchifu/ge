@@ -35,8 +35,9 @@
                         <thead class="table-secondary">
                           <tr>
                             <th scope="col">分類</th>
+                            <th scope="col">排序</th>
                             <th scope="col">名稱</th>
-                            <th scope="col">下載或連結</th>
+                            <th scope="col">動作</th>
                             <th scope="col">點擊數</th>
                           </tr>
                         </thead>
@@ -51,6 +52,9 @@
                                     <?php $type_id = $upload->type_id; ?>
                                     {{ $upload->type->name }}
                                 @endif
+                              </td>
+                              <td>
+                                {{ $upload->order_by }}
                               </td>
                               <td>
                                 @if($power == "D")
@@ -73,6 +77,9 @@
                                 @endif
                                 @auth
                                     @if(auth()->user()->admin==1 or strpos(auth()->user()->power,$power) !== false)
+                                        <a href="{{ route('upload.item_edit',['upload'=>$upload->id,'power'=>$power]) }}" class="btn btn-sm btn-outline-primary">
+                                            編輯排序
+                                        </a>
                                         <a href="#!" class="btn btn-sm btn-danger" onclick="sw_confirm1('確定刪除？','{{ route('upload.item_delete',$upload->id) }}')">
                                             刪除
                                         </a>                                    
