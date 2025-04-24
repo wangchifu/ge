@@ -34,7 +34,7 @@
                               <td><a href="{{ route('post.show',$post->id) }}" data-vbtype="iframe" class="venobox-link">{{ $post->title }}</a></td>
                               <td nowrap>系統管理者</td>
                               <td>{{ $post->views }}</td>
-                              <td>{{ \Illuminate\Support\Str::limit($post->created_at, 10, '') }}</td>
+                              <td nowrap>{{ \Illuminate\Support\Str::limit($post->created_at, 10, '') }}</td>
                             </tr>
                           @endforeach
                         </tbody>
