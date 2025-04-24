@@ -51,7 +51,7 @@
                             <th scope="col">分類</th>
                             <th scope="col">名稱</th>
                             <th scope="col">動作</th>
-                            <th scope="col">點擊</th>
+                            <th scope="col" nowrap>點擊</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -103,7 +103,7 @@
                             <th scope="col">分類</th>
                             <th scope="col">名稱</th>
                             <th scope="col">動作</th>
-                            <th scope="col">點擊</th>
+                            <th scope="col" nowrap>點擊</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -155,7 +155,7 @@
                             <th scope="col">分類</th>
                             <th scope="col">名稱</th>
                             <th scope="col">動作</th>
-                            <th scope="col">點擊</th>
+                            <th scope="col" nowrap>點擊</th>
                           </tr>
                         </thead>
                         <tbody>
