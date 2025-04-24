@@ -20,7 +20,8 @@
                         <div class="card-body">
                           <dl class="row mb-0">
                             <dt class="col-sm-2">內容</dt>
-                            <dd class="col-sm-10">{{ $post->content }}</dd>
+                            <?php $content = nl2br($post->content); ?>
+                            <dd class="col-sm-10">{!! $content !!}</dd>
                     
                             <dt class="col-sm-2">點閱</dt>
                             <dd class="col-sm-10">{{ $post->views }}</dd>

@@ -22,10 +22,10 @@
                     <table class="table table-bordered table-hover align-middle">
                         <thead class="table-secondary">
                           <tr>
-                            <th>標題</th>
-                            <th>發佈者</th>
-                            <th>點閱</th>
-                            <th>發佈日期</th>
+                            <th nowrap>標題</th>
+                            <th nowrap>發佈者</th>
+                            <th nowrap>點閱</th>
+                            <th nowrap>發佈日期</th>
                           </tr>
                         </thead>
                         <tbody>
