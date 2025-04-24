@@ -51,7 +51,7 @@
                             <th scope="col">分類</th>
                             <th scope="col">名稱</th>
                             <th scope="col">動作</th>
-                            <th scope="col">點擊數</th>
+                            <th scope="col">點擊</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -81,7 +81,7 @@
                                     </a>
                                 @else          
                                     <?php $url = route('upload.item_download',$upload->id); ?>                      
-                                    <a href="#!" class="btn btn-sm btn-success" onclick="openFileAndReload('{{ $url }}'); return false;">
+                                    <a href="#!" class="btn btn-sm btn-success" onclick="openFileAndReload('{{ $url }}'); return false;" style="white-space: nowrap;">
                                         下載
                                     </a>
                                 @endif
@@ -103,7 +103,7 @@
                             <th scope="col">分類</th>
                             <th scope="col">名稱</th>
                             <th scope="col">動作</th>
-                            <th scope="col">點擊數</th>
+                            <th scope="col">點擊</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -133,7 +133,7 @@
                                     </a>
                                 @else          
                                     <?php $url = route('upload.item_download',$upload->id); ?>                      
-                                    <a href="#!" class="btn btn-sm btn-success" onclick="openFileAndReload('{{ $url }}'); return false;">
+                                    <a href="#!" class="btn btn-sm btn-success" onclick="openFileAndReload('{{ $url }}'); return false;" style="white-space: nowrap;">
                                         下載
                                     </a>
                                 @endif
@@ -155,7 +155,7 @@
                             <th scope="col">分類</th>
                             <th scope="col">名稱</th>
                             <th scope="col">動作</th>
-                            <th scope="col">點擊數</th>
+                            <th scope="col">點擊</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -185,7 +185,7 @@
                                     </a>
                                 @else          
                                     <?php $url = route('upload.item_download',$upload->id); ?>                      
-                                    <a href="#!" class="btn btn-sm btn-success" onclick="openFileAndReload('{{ $url }}'); return false;">
+                                    <a href="#!" class="btn btn-sm btn-success" onclick="openFileAndReload('{{ $url }}'); return false;" style="white-space: nowrap;">
                                         下載
                                     </a>
                                 @endif
