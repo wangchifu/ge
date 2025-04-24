@@ -27,7 +27,7 @@
                             <dd class="col-sm-10">{{ $post->views }}</dd>
                     
                             <dt class="col-sm-2">發佈人</dt>
-                            <dd class="col-sm-10">{{ $post->user->name }}</dd>
+                            <dd class="col-sm-10">系統管理者<br>{{ $post->user->username }}</dd>
                     
                             <dt class="col-sm-2">發佈時間</dt>
                             <dd class="col-sm-10">{{ $post->created_at->format('Y-m-d H:i') }}</dd>
