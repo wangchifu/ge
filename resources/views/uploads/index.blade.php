@@ -35,7 +35,11 @@
                         <thead class="table-secondary">
                           <tr>
                             <th scope="col">分類</th>
-                            <th scope="col">排序</th>
+                            @auth
+                                @if(auth()->user()->admin==1 or strpos(auth()->user()->power,$power) !== false)
+                                    <th scope="col">排序</th>
+                                @endif                            
+                            @endauth
                             <th scope="col">名稱</th>
                             <th scope="col">動作</th>
                             <th scope="col">點擊數</th>
@@ -53,9 +57,13 @@
                                     {{ $upload->type->name }}
                                 @endif
                               </td>
-                              <td>
-                                {{ $upload->order_by }}
-                              </td>
+                              @auth
+                                @if(auth()->user()->admin==1 or strpos(auth()->user()->power,$power) !== false)
+                                  <td>
+                                    {{ $upload->order_by }}
+                                  </td>
+                                @endif                            
+                              @endauth                              
                               <td>
                                 @if($power == "D")
                                     <img src="{{ asset('storage/uploads/'.$power.'/'.$type_id.'/'.$upload->name) }}" width="100">
