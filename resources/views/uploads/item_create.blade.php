@@ -39,7 +39,7 @@
                         </select>
                     </div>
                     
-                    @if($power == "D")
+                    @if($power == "E")
                         <div class="mb-3">
                             <label for="files" class="form-label fw-bold">上傳網站截圖（單選）</label>
                             <input accept="image/*" class="form-control" type="file" name="files[]" id="files" required>

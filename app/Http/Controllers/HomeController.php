@@ -22,6 +22,7 @@ class HomeController extends Controller
         $Duploads = Upload::where('power','D')->orderBy('id','DESC')->paginate(5);
         $Euploads = Upload::where('power','E')->orderBy('id','DESC')->paginate(5);
         $Fuploads = Upload::where('power','F')->orderBy('id','DESC')->paginate(5);
+        $Guploads = Upload::where('power','G')->orderBy('id','DESC')->paginate(5);
 
         $data = [
             'posts'=>$posts,
@@ -31,6 +32,7 @@ class HomeController extends Controller
             'Duploads'=>$Duploads,
             'Euploads'=>$Euploads,
             'Fuploads'=>$Fuploads,                        
+            'Guploads'=>$Guploads,  
         ];
         return view('index',$data);
     }

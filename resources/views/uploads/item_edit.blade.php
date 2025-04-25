@@ -40,7 +40,7 @@
                         </select>
                     </div>
                     
-                    @if($power == "D")
+                    @if($power == "E")
                         <div class="mb-3">
                             <label for="files" class="form-label fw-bold">網站截圖（不可改）</label><br>
                             <img src="{{ asset('storage/uploads/'.$power.'/'.$upload->type_id.'/'.$upload->name) }}" width="100">

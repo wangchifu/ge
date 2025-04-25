@@ -11,7 +11,11 @@
         </div>        
         <div class="collapse navbar-collapse text-center order-lg-2 order-4" id="navigation">
           <ul class="navbar-nav mx-auto mt-3 mt-lg-0">
-            <li class="nav-item"> <a class="nav-link" href="{{ route('upload.index','A') }}">專業人才庫</a>
+            <li class="nav-item"> <a class="nav-link" href="{{ route('upload.index','A') }}">相關表單</a>
+            </li>
+            <li class="nav-item"> <a class="nav-link" href="{{ route('upload.index','B') }}">案例分享</a>
+            </li>
+            <li class="nav-item"> <a class="nav-link" href="{{ route('upload.index','C') }}">專業人才庫</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -19,20 +23,19 @@
                 </a>
               <div class="dropdown-menu"> 
                 <?php
-                  $types = \App\Models\Type::where('power','B')->orderBy('order_by')->get();
+                  $types = \App\Models\Type::where('power','D')->orderBy('order_by')->get();
                 ?>
                 @foreach($types as $type)
-                <a class="dropdown-item" href="{{ route('upload.index',['power'=>'B','type_id'=>$type->id]) }}">{{ $type->name }}</a>
-              @endforeach                
+                  <a class="dropdown-item" href="{{ route('upload.index',['power'=>'D','type_id'=>$type->id]) }}">{{ $type->name }}</a>
+                @endforeach                
               </div>
             </li>
-            <li class="nav-item"> <a class="nav-link" href="{{ route('upload.index','C') }}">性平事件處理表單</a>
+            
+            <li class="nav-item"> <a class="nav-link" href="{{ route('upload.index','E') }}">友站連結</a>
             </li>
-            <li class="nav-item"> <a class="nav-link" href="{{ route('upload.index','D') }}">友站連結</a>
+            <li class="nav-item"> <a class="nav-link" href="{{ route('upload.index','F') }}">相關法規</a>
             </li>
-            <li class="nav-item"> <a class="nav-link" href="{{ route('upload.index','E') }}">相關法規</a>
-            </li>
-            <li class="nav-item"> <a class="nav-link" href="{{ route('upload.index','F') }}">資源分享</a>
+            <li class="nav-item"> <a class="nav-link" href="{{ route('upload.index','G') }}">資源分享</a>
             </li>          
             @guest  
             <li class="nav-item"> <a class="nav-link" href="{{ route('glogin') }}">登入</a>
