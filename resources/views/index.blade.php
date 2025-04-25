@@ -261,20 +261,21 @@
                                 <div class="widget-body" style="margin-top:-40px;">
                                     <div class="widget-list">
                                         @foreach($Euploads as $upload)
+                                            <?php $url = route('upload.item_link',$upload->id); ?> 
                                             <article class="card mb-4">
                                                 <div class="card-image">
                                                 <!--
                                                 <div class="post-info"> <span class="text-uppercase">{{ $upload->created_at }}</span>                                                
                                                 </div>
                                                 -->
-                                                <a href="{{ $upload->url }}" target="_blank">
+                                                <a href="#!" onclick="openFileAndReload('{{ $url }}'); return false;">
                                                     <img loading="lazy" decoding="async" src="{{ asset('storage/uploads/'.$upload->power.'/'.$upload->type_id.'/'.$upload->name) }}" alt="Post Thumbnail" class="w-100" style="border: 1px solid #333;">
                                                 </a>
                                                 </div>
                                                 <div class="card-body px-0 pb-1">
                                                 <h3>
-                                                    <a class="post-title post-title-sm" href="{{ $upload->url }}" target="_blank">
-                                                        {{ $upload->sitename }}
+                                                    <a class="post-title post-title-sm" href="#!" onclick="openFileAndReload('{{ $url }}'); return false;">
+                                                        {{ $upload->sitename }} ({{ $upload->views }})
                                                     </a>
                                                 </h3>                                        
                                                 </div>
@@ -290,8 +291,9 @@
                                 <h2 class="section-title mb-3">相關法規</h2>
                                 <div class="widget-body" style="margin-top:-40px;">
                                     <ul class="widget-list">
-                                    @foreach ($Fuploads as $upload)                                        
-                                        <li><a href="{{ $upload->url }}" target="_blank">{{ $upload->sitename }}</a>
+                                    @foreach ($Fuploads as $upload)         
+                                        <?php $url = route('upload.item_link',$upload->id); ?>                                
+                                        <li><a href="#!" onclick="openFileAndReload('{{ $url }}'); return false;">{{ $upload->sitename }} ({{ $upload->views }})</a>
                                         </li>
                                     @endforeach                                                                        
                                     </ul>
