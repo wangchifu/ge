@@ -39,15 +39,16 @@
                         </select>
                     </div>
                     
-                    @if($power == "E")
+                    @if($power == "E" or $power == "F")
+                        @if($power == "E")
+                            <div class="mb-3">
+                                <label for="files" class="form-label fw-bold">上傳網站截圖（單選）</label>
+                                <input accept="image/*" class="form-control" type="file" name="files[]" id="files" required>
+                            </div>
+                        @endif
                         <div class="mb-3">
-                            <label for="files" class="form-label fw-bold">上傳網站截圖（單選）</label>
-                            <input accept="image/*" class="form-control" type="file" name="files[]" id="files" required>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="name" class="form-label fw-bold">網站名稱 <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" name="sitename" id="sitename" required placeholder="請輸入網站名稱">
+                            <label for="name" class="form-label fw-bold">名稱 <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" name="sitename" id="sitename" required placeholder="請輸入名稱">
                         </div>
 
                         <div class="mb-3">

@@ -92,7 +92,7 @@
                         </tbody>
                       </table>    
                       <div class="col-12 mb-4">        
-                        <small>[<a href="{{ route('upload.index','C') }}">更多校園性別事件處理調查相關表單...</a>]</small>                                    
+                        <small>[<a href="{{ route('upload.index','A') }}">更多校園性別事件處理調查相關表單...</a>]</small>                                    
                     </div>                                           
                 </div>
                 <div class="row">
@@ -144,7 +144,7 @@
                         </tbody>
                       </table>      
                       <div class="col-12 mb-4">    
-                        <small>[<a href="{{ route('upload.index','A') }}">更多案例分享...</a>]</small>                    
+                        <small>[<a href="{{ route('upload.index','B') }}">更多案例分享...</a>]</small>                    
                     </div>                                  
                 </div>
                 <div class="row">
@@ -196,7 +196,7 @@
                         </tbody>
                       </table>      
                       <div class="col-12 mb-4">    
-                        <small>[<a href="{{ route('upload.index','A') }}">更多專業人才庫...</a>]</small>                    
+                        <small>[<a href="{{ route('upload.index','C') }}">更多專業人才庫...</a>]</small>                    
                     </div>                                  
                 </div>
                 <div class="row">
@@ -248,7 +248,7 @@
                         </tbody>
                       </table>      
                       <div class="col-12 mb-4">         
-                        <small>[<a href="{{ route('upload.index','B') }}">更多性平媒材...</a>]</small>                                   
+                        <small>[<a href="{{ route('upload.index','D') }}">更多性平媒材...</a>]</small>                                   
                     </div>                                            
                 </div>
             </div>
@@ -258,17 +258,17 @@
                         <div class="col-lg-12 col-md-6">
                             <div class="widget">
                                 <h2 class="section-title mb-3">友站連結</h2>
-                                <div class="widget-body">
+                                <div class="widget-body" style="margin-top:-40px;">
                                     <div class="widget-list">
                                         @foreach($Euploads as $upload)
                                             <article class="card mb-4">
                                                 <div class="card-image">
                                                 <!--
-                                                <div class="post-info"> <span class="text-uppercase">{{ $upload->created_at }}</span>
-                                                -->
+                                                <div class="post-info"> <span class="text-uppercase">{{ $upload->created_at }}</span>                                                
                                                 </div>
+                                                -->
                                                 <a href="{{ $upload->url }}" target="_blank">
-                                                    <img loading="lazy" decoding="async" src="{{ asset('storage/uploads/'.$upload->power.'/'.$upload->type_id.'/'.$upload->name) }}" alt="Post Thumbnail" class="w-100">
+                                                    <img loading="lazy" decoding="async" src="{{ asset('storage/uploads/'.$upload->power.'/'.$upload->type_id.'/'.$upload->name) }}" alt="Post Thumbnail" class="w-100" style="border: 1px solid #333;">
                                                 </a>
                                                 </div>
                                                 <div class="card-body px-0 pb-1">
@@ -280,7 +280,7 @@
                                                 </div>
                                             </article>                   
                                         @endforeach  
-                                        <small>[<a href="{{ route('upload.index','D') }}">更多友站連結...</a>]</small>                                           
+                                        <small>[<a href="{{ route('upload.index','E') }}">更多友站連結...</a>]</small>                                           
                                     </div>
                                 </div>
                             </div>
@@ -288,22 +288,21 @@
                         <div class="col-lg-12 col-md-6">
                             <div class="widget">
                                 <h2 class="section-title mb-3">相關法規</h2>
-                                <div class="widget-body">
+                                <div class="widget-body" style="margin-top:-40px;">
                                     <ul class="widget-list">
-                                    @foreach ($Fuploads as $upload)
-                                        <?php $url = route('upload.item_download',$upload->id); ?>
-                                        <li><a href="#!" onclick="openFileAndReload('{{ $url }}'); return false;">{{ $upload->name }} ({{ $upload->views }})</a>
+                                    @foreach ($Fuploads as $upload)                                        
+                                        <li><a href="{{ $upload->url }}" target="_blank">{{ $upload->sitename }}</a>
                                         </li>
                                     @endforeach                                                                        
                                     </ul>
-                                    <small>[<a href="{{ route('upload.index','E') }}">更多相關法規...</a>]</small>                                    
+                                    <small>[<a href="{{ route('upload.index','F') }}">更多相關法規...</a>]</small>                                    
                                 </div>
                             </div>                        
                         </div>
                         <div class="col-lg-12 col-md-6">
                             <div class="widget">
                                 <h2 class="section-title mb-3">資源分享</h2>
-                                <div class="widget-body">
+                                <div class="widget-body" style="margin-top:-40px;">
                                     <ul class="widget-list">
                                     @foreach ($Guploads as $upload)
                                         <?php $url = route('upload.item_download',$upload->id); ?>
@@ -311,7 +310,7 @@
                                         </li>
                                     @endforeach                                    
                                     </ul>
-                                    <small>[<a href="{{ route('upload.index','F') }}">更多資源分享...</a>]</small>                                    
+                                    <small>[<a href="{{ route('upload.index','G') }}">更多資源分享...</a>]</small>                                    
                                 </div>
                             </div>
                             

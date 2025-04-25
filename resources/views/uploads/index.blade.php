@@ -65,14 +65,16 @@
                                 @endif                            
                               @endauth                              
                               <td>
-                                @if($power == "D")
+                                @if($power == "E")
                                     <img src="{{ asset('storage/uploads/'.$power.'/'.$type_id.'/'.$upload->name) }}" width="100">
+                                @elseif($power == "F")
+                                    {{ $upload->sitename }}
                                 @else
                                     {{ $upload->name }}
                                 @endif
                               </td>
                               <td>                                
-                                @if($power == "D")
+                                @if($power == "E" or $power == "F")
                                 <?php $url = route('upload.item_link',$upload->id); ?>
                                     <a href="#!" class="btn btn-sm btn-success" onclick="openFileAndReload('{{ $url }}'); return false;">
                                         連結

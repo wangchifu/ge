@@ -40,15 +40,16 @@
                         </select>
                     </div>
                     
-                    @if($power == "E")
+                    @if($power == "E" or $power ==  "F")
+                        @if($power == "E")
+                            <div class="mb-3">
+                                <label for="files" class="form-label fw-bold">網站截圖（不可改）</label><br>
+                                <img src="{{ asset('storage/uploads/'.$power.'/'.$upload->type_id.'/'.$upload->name) }}" width="100">
+                            </div>
+                        @endif
                         <div class="mb-3">
-                            <label for="files" class="form-label fw-bold">網站截圖（不可改）</label><br>
-                            <img src="{{ asset('storage/uploads/'.$power.'/'.$upload->type_id.'/'.$upload->name) }}" width="100">
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="name" class="form-label fw-bold">網站名稱 <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" name="sitename" value="{{ $upload->sitename }}" id="sitename" required placeholder="請輸入網站名稱">
+                            <label for="name" class="form-label fw-bold">名稱 <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" name="sitename" value="{{ $upload->sitename }}" id="sitename" required placeholder="請輸入名稱">
                         </div>
 
                         <div class="mb-3">

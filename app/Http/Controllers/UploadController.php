@@ -165,29 +165,44 @@ class UploadController extends Controller
             }            
         }
         //處理檔案上傳        
-        if ($request->hasFile('files')) {
-            $files = $request->file('files');
-            foreach ($files as $file) {
-                $originalName = $file->getClientOriginalName();
-                $extension = $file->getClientOriginalExtension();
+        if($power == "F"){
+            $att['order_by'] = $request->input('order_by');
+            $att['power'] = $power;             
+            $att['name'] = "相關法規";
+            $att['type_id'] = $request->input('type_id');
+            $att['sitename'] = $request->input('sitename');
+            $att['url'] = $request->input('url');
+            $att['user_id'] = auth()->user()->id;
+            $att['views'] = 0;
 
-                    // 移除空格或轉換為底線
-                $safeName = str_replace(' ', '', $originalName);                
-
-                $att['order_by'] = $request->input('order_by');
-                $att['power'] = $power;             
-                $att['name'] = $safeName;
-                $att['type_id'] = $request->input('type_id');
-                $att['sitename'] = $request->input('sitename');
-                $att['url'] = $request->input('url');
-                $att['user_id'] = auth()->user()->id;
-                $att['views'] = 0;
-
-                $upload = Upload::create($att);
-
-                $file->storeAs('public/uploads/'.$power.'/'.$att['type_id'].'/', $safeName);
+            $upload = Upload::create($att);
+        }else{
+            if ($request->hasFile('files')) {
+                $files = $request->file('files');
+                foreach ($files as $file) {
+                    $originalName = $file->getClientOriginalName();
+                    $extension = $file->getClientOriginalExtension();
+    
+                        // 移除空格或轉換為底線
+                    $safeName = str_replace(' ', '', $originalName);                
+    
+                    $att['order_by'] = $request->input('order_by');
+                    $att['power'] = $power;             
+                    $att['name'] = $safeName;
+                    $att['type_id'] = $request->input('type_id');
+                    $att['sitename'] = $request->input('sitename');
+                    $att['url'] = $request->input('url');
+                    $att['user_id'] = auth()->user()->id;
+                    $att['views'] = 0;
+    
+                    $upload = Upload::create($att);
+    
+                    $file->storeAs('public/uploads/'.$power.'/'.$att['type_id'].'/', $safeName);
+                }
             }
         }
+
+        
 
         return redirect()->route('upload.index',$power);
     }
