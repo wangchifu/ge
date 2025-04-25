@@ -67,6 +67,7 @@
                               <td>
                                 @if($power == "E")
                                     <img src="{{ asset('storage/uploads/'.$power.'/'.$type_id.'/'.$upload->name) }}" width="100">
+                                    {{ $upload->sitename }}
                                 @elseif($power == "F")
                                     {{ $upload->sitename }}
                                 @else
