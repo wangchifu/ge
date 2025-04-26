@@ -34,15 +34,15 @@
                     <table class="table table-bordered table-hover align-middle">
                         <thead class="table-secondary">
                           <tr>
-                            <th scope="col">分類</th>
+                            <th scope="col" nowrap>分類</th>
                             @auth
                                 @if(auth()->user()->admin==1 or strpos(auth()->user()->power,$power) !== false)
-                                    <th scope="col">排序</th>
+                                    <th scope="col" nowrap>排序</th>
                                 @endif                            
                             @endauth
-                            <th scope="col">名稱</th>
-                            <th scope="col">動作</th>
-                            <th scope="col">點擊數</th>
+                            <th scope="col" nowrap>名稱</th>
+                            <th scope="col" nowrap>動作</th>
+                            <th scope="col" nowrap>點擊</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -77,12 +77,12 @@
                               <td>                                
                                 @if($power == "E" or $power == "F")
                                 <?php $url = route('upload.item_link',$upload->id); ?>
-                                    <a href="#!" class="btn btn-sm btn-success" onclick="openFileAndReload('{{ $url }}'); return false;">
+                                    <a href="#!" class="btn btn-sm btn-success" onclick="openFileAndReload('{{ $url }}'); return false;" style="white-space: nowrap;">
                                         連結
                                     </a>
                                 @else          
                                     <?php $url = route('upload.item_download',$upload->id); ?>                      
-                                    <a href="#!" class="btn btn-sm btn-success" onclick="openFileAndReload('{{ $url }}'); return false;">
+                                    <a href="#!" class="btn btn-sm btn-success" onclick="openFileAndReload('{{ $url }}'); return false;" style="white-space: nowrap;">
                                         下載
                                     </a>
                                 @endif
