@@ -32,9 +32,9 @@
                           @foreach ($posts as $post)
                             <tr>
                               <td><a href="{{ route('post.show',$post->id) }}" data-vbtype="iframe" class="venobox-link">{{ $post->title }}</a></td>
-                              <td nowrap>系統管理者</td>
+                              <td>系統管理者</td>
                               <td>{{ $post->views }}</td>
-                              <td nowrap>{{ \Illuminate\Support\Str::limit($post->created_at, 10, '') }}</td>
+                              <td>{{ \Illuminate\Support\Str::limit($post->created_at, 10, '') }}</td>
                             </tr>
                           @endforeach
                         </tbody>
@@ -48,9 +48,9 @@
                     <table class="table table-bordered table-hover align-middle">
                         <thead class="table-secondary">
                           <tr>
-                            <th scope="col">分類</th>
-                            <th scope="col">名稱</th>
-                            <th scope="col">動作</th>
+                            <th scope="col" nowrap>分類</th>
+                            <th scope="col" nowrap>名稱</th>
+                            <th scope="col" nowrap>動作</th>
                             <th scope="col" nowrap>點擊</th>
                           </tr>
                         </thead>
@@ -100,9 +100,9 @@
                     <table class="table table-bordered table-hover align-middle">
                         <thead class="table-secondary">
                           <tr>
-                            <th scope="col">分類</th>
-                            <th scope="col">名稱</th>
-                            <th scope="col">動作</th>
+                            <th scope="col" nowrap>分類</th>
+                            <th scope="col" nowrap>名稱</th>
+                            <th scope="col" nowrap>動作</th>
                             <th scope="col" nowrap>點擊</th>
                           </tr>
                         </thead>
@@ -152,9 +152,9 @@
                     <table class="table table-bordered table-hover align-middle">
                         <thead class="table-secondary">
                           <tr>
-                            <th scope="col">分類</th>
-                            <th scope="col">名稱</th>
-                            <th scope="col">動作</th>
+                            <th scope="col" nowrap>分類</th>
+                            <th scope="col" nowrap>名稱</th>
+                            <th scope="col" nowrap>動作</th>
                             <th scope="col" nowrap>點擊</th>
                           </tr>
                         </thead>
@@ -204,9 +204,9 @@
                     <table class="table table-bordered table-hover align-middle">
                         <thead class="table-secondary">
                           <tr>
-                            <th scope="col">分類</th>
-                            <th scope="col">名稱</th>
-                            <th scope="col">動作</th>
+                            <th scope="col" nowrap>分類</th>
+                            <th scope="col" nowrap>名稱</th>
+                            <th scope="col" nowrap>動作</th>
                             <th scope="col" nowrap>點擊</th>
                           </tr>
                         </thead>
@@ -258,7 +258,7 @@
                         <div class="col-lg-12 col-md-6">
                             <div class="widget">
                                 <h2 class="section-title mb-3">友站連結</h2>
-                                <div class="widget-body" style="margin-top:-40px;">
+                                <div class="widget-body" style="margin-top:-30px;">
                                     <div class="widget-list">
                                         @foreach($Euploads as $upload)
                                             <?php $url = route('upload.item_link',$upload->id); ?> 
@@ -289,7 +289,7 @@
                         <div class="col-lg-12 col-md-6">
                             <div class="widget">
                                 <h2 class="section-title mb-3">相關法規</h2>
-                                <div class="widget-body" style="margin-top:-40px;">
+                                <div class="widget-body" style="margin-top:-30px;">
                                     <ul class="widget-list">
                                     @foreach ($Fuploads as $upload)         
                                         <?php $url = route('upload.item_link',$upload->id); ?>                                
@@ -304,7 +304,7 @@
                         <div class="col-lg-12 col-md-6">
                             <div class="widget">
                                 <h2 class="section-title mb-3">資源分享</h2>
-                                <div class="widget-body" style="margin-top:-40px;">
+                                <div class="widget-body" style="margin-top:-30px;">
                                     <ul class="widget-list">
                                     @foreach ($Guploads as $upload)
                                         <?php $url = route('upload.item_download',$upload->id); ?>
