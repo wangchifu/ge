@@ -10,8 +10,10 @@ class UserController extends Controller
     public function index(){
          
         $users= User::orderBy('disable')->orderBy('admin','desc')->orderBy('power','desc')->paginate('10');
+        $power_items = config('ge.power_items');
         $data = [
             'users'=>$users,
+            'power_items'=>$power_items,
         ];
         return view('users.index',$data);
     }
@@ -23,8 +25,10 @@ class UserController extends Controller
     }
 
     public function edit_power(User $user){
+        $power_items = config('ge.power_items');
         $data = [
             'user'=>$user,
+            'power_items'=>$power_items,
         ];
         return view('users.edit_power',$data);
     }

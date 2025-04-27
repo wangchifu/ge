@@ -25,39 +25,22 @@
                                 </div>
                             </div>
                             <?php                                     
-                                    $checkedA = (strpos($user->power, 'A') !== false)?"checked":null;
-                                    $checkedB = (strpos($user->power, 'B') !== false)?"checked":null;
-                                    $checkedC = (strpos($user->power, 'C') !== false)?"checked":null;
-                                    $checkedD = (strpos($user->power, 'D') !== false)?"checked":null;
-                                    $checkedE = (strpos($user->power, 'E') !== false)?"checked":null;
-                                    $checkedF = (strpos($user->power, 'F') !== false)?"checked":null;                                    
+                                    $checked['A'] = (strpos($user->power, 'A') !== false)?"checked":null;
+                                    $checked['B'] = (strpos($user->power, 'B') !== false)?"checked":null;
+                                    $checked['C'] = (strpos($user->power, 'C') !== false)?"checked":null;
+                                    $checked['D'] = (strpos($user->power, 'D') !== false)?"checked":null;
+                                    $checked['E'] = (strpos($user->power, 'E') !== false)?"checked":null;
+                                    $checked['F']= (strpos($user->power, 'F') !== false)?"checked":null;                                    
+                                    $checked['G'] = (strpos($user->power, 'G') !== false)?"checked":null;
                             ?>
                             <div class="mb-3">
                             <label class="form-label fw-bold">使用權限</label>
-                                <div class="form-check">
-                                <input class="form-check-input power-check" type="checkbox" id="powerA" name="power[]" value="A" {{ $checkedA }}>
-                                <label class="form-check-label" for="powerA">專業人才庫(A)</label>
-                                </div>
-                                <div class="form-check">
-                                <input class="form-check-input power-check" type="checkbox" id="powerB" name="power[]" value="B" {{ $checkedB }}>
-                                <label class="form-check-label" for="powerB">性平媒材(B)</label>
-                                </div>
-                                <div class="form-check">
-                                <input class="form-check-input power-check" type="checkbox" id="powerC" name="power[]" value="C" {{ $checkedC }}>
-                                <label class="form-check-label" for="powerC">性平事件處理表單(C)</label>
-                                </div>
-                                <div class="form-check">
-                                <input class="form-check-input power-check" type="checkbox" id="powerD" name="power[]" value="D" {{ $checkedD }}>
-                                <label class="form-check-label" for="powerD">友站連結(D)</label>
-                                </div>
-                                <div class="form-check">
-                                <input class="form-check-input power-check" type="checkbox" id="powerE" name="power[]" value="E" {{ $checkedE }}>
-                                <label class="form-check-label" for="powerE">相關法規(E)</label>
-                                </div>
-                                <div class="form-check">
-                                <input class="form-check-input power-check" type="checkbox" id="powerF" name="power[]" value="F" {{ $checkedF }}>
-                                <label class="form-check-label" for="powerF">資源分享(F)</label>
-                                </div>
+                                @foreach($power_items as $k=>$v)
+                                  <div class="form-check">
+                                    <input class="form-check-input power-check" type="checkbox" id="power{{ $k }}" name="power[]" value="{{ $k }}" {{ $checked[$k] }}>
+                                    <label class="form-check-label" for="power{{ $k }}">{{ $v }}({{ $k }})</label>
+                                  </div>
+                                @endforeach                                
                             </div>
                         <button type="submit" class="btn btn-primary">儲存</button>
                     </form>                                                           

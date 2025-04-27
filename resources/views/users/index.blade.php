@@ -51,7 +51,10 @@
                           <tr>
                         </tbody>
                       </table>
-                      註：A:專業人才庫,B:性平媒材,C:性平事件處理表單,D:友站連結,E:相關法規,F:資源分享
+                      註：
+                      @foreach($power_items as $k=>$v)
+                        {{ $k }}:{{ $v }},
+                      @endforeach
                       {{ $users->withQueryString()->links('pagination::bootstrap-5') }}                      
                 </div>
             </div>               
