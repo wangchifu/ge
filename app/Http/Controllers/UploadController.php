@@ -248,17 +248,25 @@ class UploadController extends Controller
     }
 
     public function item_download(Upload $upload){        
-        $file = storage_path('app/public/uploads/'.$upload->power.'/'.$upload->type_id.'/'.$upload->name);
-        $att['views'] = $upload->views;
-        $att['views']++;        
-        $upload->update($att);
+        $file = storage_path('app/public/uploads/'.$upload->power.'/'.$upload->type_id.'/'.$upload->name);        
+        $s_key = "item_down" . $upload->id;
+        if (!session($s_key)) {
+            $att['views'] = $upload->views;
+            $att['views']++;        
+            $upload->update($att); 
+        }
+        session([$s_key => '1']);
         //return response()->download($file);        
         return response()->file($file);        
     }
-    public function item_link(Upload $upload){                
-        $att['views'] = $upload->views;
-        $att['views']++;        
-        $upload->update($att);            
+    public function item_link(Upload $upload){     
+        $s_key = "item_down" . $upload->id;
+        if (!session($s_key)) {
+            $att['views'] = $upload->views;
+            $att['views']++;        
+            $upload->update($att); 
+        }
+        session([$s_key => '1']);                            
         return redirect($upload->url);        
     }
 
