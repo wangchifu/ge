@@ -157,17 +157,19 @@ class HomeController extends Controller
                 $user->update($att);
             }            
 
-            if (Auth::attempt([
-                'username' => $username[0],
-                'password' => $request->input('password')
-            ])) {                                
-                //到本來的要求頁面
-                if (empty($request->session()->get('url.intended'))) {
-                    return redirect()->route('index');
-                } else {
-                    return redirect($request->session()->get('url.intended'));
-                }                
-            }
+            //if (Auth::attempt([
+            //    'username' => $username[0],
+            //    'password' => $request->input('password')
+            //])) {                                                         
+            //}
+
+            Auth::login($user);
+            //到本來的要求頁面
+            if (empty($request->session()->get('url.intended'))) {
+                return redirect()->route('index');
+            } else {
+                return redirect($request->session()->get('url.intended'));
+            }               
         };        
 
         return back()->withErrors(['errors' => ['帳號密碼錯誤']]);
