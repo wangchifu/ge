@@ -38,7 +38,7 @@
             <li class="nav-item"> <a class="nav-link" href="{{ route('upload.index','G') }}">資源分享</a>
             </li>          
             @guest  
-            <li class="nav-item"> <a class="nav-link" href="{{ route('glogin') }}">登入</a>
+            <li class="nav-item"> <a class="nav-link" href="{{ route('sso') }}">OpenID 登入</a>
             </li>
             @endguest
             @auth
