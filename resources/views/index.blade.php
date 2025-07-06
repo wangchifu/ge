@@ -18,6 +18,7 @@
                             </div>
                         @endif
                     @endauth
+                    @include('layouts.errors')
                     <h2 class="section-title mb-3">最新公告</h2>
                     <table class="table table-bordered table-hover align-middle">
                         <thead class="table-secondary">
